@@ -256,188 +256,195 @@ if (!function_exists('ufs')) {
         ];
     }
 }
-
-function tinymce($type = 'admin')
-{
-    if ($type == 'admin') {
-//        <script src="/admin_assets/tinymce/tinymce.min.js"></script>
-        return '
-                
-                <script>
-                tinyMCE.baseURL = "/admin_assets/js/tinymce";
-                tinymce.init({
-                    selector:\'textarea\',
-                    plugins: [
-                        \'advlist autolink lists link image charmap print preview anchor\',
-                        \'searchreplace visualblocks code fullscreen\',
-                        \'insertdatetime media table contextmenu paste code jbimages\'
-                    ],
-                    toolbar: \'insertfile undo redo | styleselect | bold italic | alignleft \' +
-                    \'aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages\',
-                    language: \'pt_BR\',
-                    menubar: true,
-                    relative_urls: false
-                });
-                </script>
-        ';
-    } else {
-//        <script src="/admin_assets/tinymce/tinymce.min.js"></script>
-        return '
-                
-                <script>
-                tinyMCE.baseURL = "/admin_assets/js/tinymce";
-                tinymce.init({
-                    selector:\'textarea\',
-                    plugins: [
-                        \'advlist autolink lists link image charmap print preview anchor\',
-                        \'searchreplace visualblocks code fullscreen\',
-                        \'insertdatetime media contextmenu paste\'
-                    ],
-                    toolbar: "undo | bold italic | alignleft aligncenter alignjustify | " +
-                    "bullist numlist | link image",
-                    language: \'pt_BR\',
-                    menubar: false,
-                });
-                </script>
+if (!function_exists('tinymce')) {
+    function tinymce($type = 'admin')
+    {
+        if ($type == 'admin') {
+    //        <script src="/admin_assets/tinymce/tinymce.min.js"></script>
+            return '
+                    
+                    <script>
+                    tinyMCE.baseURL = "/admin_assets/js/tinymce";
+                    tinymce.init({
+                        selector:\'textarea\',
+                        plugins: [
+                            \'advlist autolink lists link image charmap print preview anchor\',
+                            \'searchreplace visualblocks code fullscreen\',
+                            \'insertdatetime media table contextmenu paste code jbimages\'
+                        ],
+                        toolbar: \'insertfile undo redo | styleselect | bold italic | alignleft \' +
+                        \'aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages\',
+                        language: \'pt_BR\',
+                        menubar: true,
+                        relative_urls: false
+                    });
+                    </script>
             ';
-    }
-}
-
-
-function jsAlert($msg = "Você tem certeza que deseja remover o registro?")
-{
-    return "onclick=\"return confirm('" . $msg . "')\"";
-}
-
-
-function getDiaSemana($dia = false)
-{
-
-    $dias = [
-        [
-            'n' => 0,
-            'nome' => 'Segunda-feira',
-            'nomeCurto' => 'Segunda'
-        ],
-        [
-            'n' => 1,
-            'nome' => 'Terça-feira',
-            'nomeCurto' => 'Terça'
-        ],
-        [
-            'n' => 2,
-            'nome' => 'Quarta-feira',
-            'nomeCurto' => 'Quarta'
-        ],
-        [
-            'n' => 3,
-            'nome' => 'Quinta-feira',
-            'nomeCurto' => 'Quinta'
-        ],
-        [
-            'n' => 4,
-            'nome' => 'Sexta-feira',
-            'nomeCurto' => 'Sexta'
-        ],
-        [
-            'n' => 5,
-            'nome' => 'Sábado',
-            'nomeCurto' => 'Sábado'
-        ],
-        [
-            'n' => 6,
-            'nome' => 'Domingo',
-            'nomeCurto' => 'Domingo'
-        ],
-    ];
-
-    if ($dia === 'select') {
-        foreach ($dias as $dia) {
-            $r[$dia['n']] = $dia['nome'];
+        } else {
+    //        <script src="/admin_assets/tinymce/tinymce.min.js"></script>
+            return '
+                    
+                    <script>
+                    tinyMCE.baseURL = "/admin_assets/js/tinymce";
+                    tinymce.init({
+                        selector:\'textarea\',
+                        plugins: [
+                            \'advlist autolink lists link image charmap print preview anchor\',
+                            \'searchreplace visualblocks code fullscreen\',
+                            \'insertdatetime media contextmenu paste\'
+                        ],
+                        toolbar: "undo | bold italic | alignleft aligncenter alignjustify | " +
+                        "bullist numlist | link image",
+                        language: \'pt_BR\',
+                        menubar: false,
+                    });
+                    </script>
+                ';
         }
-        return $r;
     }
+}
+
+if (!function_exists('jsAlert')) {
+    function jsAlert($msg = "Você tem certeza que deseja remover o registro?")
+    {
+        return "onclick=\"return confirm('" . $msg . "')\"";
+    }
+}
+
+if (!function_exists('getDiaSemana')) {
+    function getDiaSemana($dia = false)
+    {
+
+        $dias = [
+            [
+                'n' => 0,
+                'nome' => 'Segunda-feira',
+                'nomeCurto' => 'Segunda'
+            ],
+            [
+                'n' => 1,
+                'nome' => 'Terça-feira',
+                'nomeCurto' => 'Terça'
+            ],
+            [
+                'n' => 2,
+                'nome' => 'Quarta-feira',
+                'nomeCurto' => 'Quarta'
+            ],
+            [
+                'n' => 3,
+                'nome' => 'Quinta-feira',
+                'nomeCurto' => 'Quinta'
+            ],
+            [
+                'n' => 4,
+                'nome' => 'Sexta-feira',
+                'nomeCurto' => 'Sexta'
+            ],
+            [
+                'n' => 5,
+                'nome' => 'Sábado',
+                'nomeCurto' => 'Sábado'
+            ],
+            [
+                'n' => 6,
+                'nome' => 'Domingo',
+                'nomeCurto' => 'Domingo'
+            ],
+        ];
+
+        if ($dia === 'select') {
+            foreach ($dias as $dia) {
+                $r[$dia['n']] = $dia['nome'];
+            }
+            return $r;
+        }
 
 
-    if ($dia === false) {
-        return $dias;
-    } else {
-        foreach ($dias as $diax) {
-            if ($dia === $diax['n']) {
-                return $diax['nome'];
+        if ($dia === false) {
+            return $dias;
+        } else {
+            foreach ($dias as $diax) {
+                if ($dia === $diax['n']) {
+                    return $diax['nome'];
+                }
             }
         }
     }
 }
 
-function getMesNome($mes)
-{
-    switch ($mes) {
-        case 1:
-            return 'Janeiro';
-            break;
-        case 2:
-            return 'Fevereiro';
-            break;
-        case 3:
-            return 'Março';
-            break;
-        case 4:
-            return 'Abril';
-            break;
-        case 5:
-            return 'Maio';
-            break;
-        case 6:
-            return 'Junho';
-            break;
-        case 7:
-            return 'Julho';
-            break;
-        case 8:
-            return 'Agosto';
-            break;
-        case 9:
-            return 'Setembro';
-            break;
-        case 10:
-            return 'Outubro';
-            break;
-        case 11:
-            return 'Novembro';
-            break;
-        case 12:
-            return 'Dezembro';
-            break;
+if (!function_exists('getMesNome')) {
+    function getMesNome($mes)
+    {
+        switch ($mes) {
+            case 1:
+                return 'Janeiro';
+                break;
+            case 2:
+                return 'Fevereiro';
+                break;
+            case 3:
+                return 'Março';
+                break;
+            case 4:
+                return 'Abril';
+                break;
+            case 5:
+                return 'Maio';
+                break;
+            case 6:
+                return 'Junho';
+                break;
+            case 7:
+                return 'Julho';
+                break;
+            case 8:
+                return 'Agosto';
+                break;
+            case 9:
+                return 'Setembro';
+                break;
+            case 10:
+                return 'Outubro';
+                break;
+            case 11:
+                return 'Novembro';
+                break;
+            case 12:
+                return 'Dezembro';
+                break;
+        }
     }
 }
 
-function shareBlock($scryptsOnly = false)
-{
-    $scripts = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-        <a class="a2a_button_facebook"></a>
-        <a class="a2a_button_twitter"></a>
-        <a class="a2a_button_google_plus"></a>
-        <a class="a2a_button_email"></a>
-        <a class="a2a_button_whatsapp hidden-lg hidden-md"></a>
-    </div>
-    <script>
-        var a2a_config = a2a_config || {};
-        a2a_config.onclick = 1;
-        a2a_config.locale = "pt-BR";
-    </script>
-    <script async src="https://static.addtoany.com/menu/page.js"></script>';
+if (!function_exists('shareBlock')) {
+    function shareBlock($scryptsOnly = false)
+    {
+        $scripts = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_email"></a>
+            <a class="a2a_button_whatsapp hidden-lg hidden-md"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.onclick = 1;
+            a2a_config.locale = "pt-BR";
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>';
 
-    if ($scryptsOnly) {
-        return $scripts;
+        if ($scryptsOnly) {
+            return $scripts;
+        }
+
+        return '<div class="social pull-right" style="margin: 1.5em 0">
+        <h4>Gostou compartilhe:</h4>
+        <p>
+        ' . $scripts . '
+        </p>
+        <div class="clearfix"></div>
+    </div>';
     }
-
-    return '<div class="social pull-right" style="margin: 1.5em 0">
-    <h4>Gostou compartilhe:</h4>
-    <p>
-    ' . $scripts . '
-    </p>
-    <div class="clearfix"></div>
-</div>';
 }
