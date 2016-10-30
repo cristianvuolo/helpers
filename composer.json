@@ -2,19 +2,14 @@
   "name": "cristianvuolo/helpers",
   "license": "",
   "require": {
-    "php": ">=5.5.9",
-    "nesbot/carbon": "1.21.*",
-    "illuminate/database": "5.3.*"
+    "php": ">=5.5.9"
   },
   "require-dev": {
 
   },
   "autoload": {
     "psr-4": {
-      "CristianVuolo\\Paginas\\": "src/Helpers/"
-    },
-    "files": [
-      "src/Helpers/Helpers/CvHelpers.php"
-    ]
+      "CristianVuolo\\Helpers\\": "src/Helpers/"
+    }
   }
 }
