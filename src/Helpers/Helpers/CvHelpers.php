@@ -257,14 +257,14 @@ if (!function_exists('ufs')) {
     }
 }
 if (!function_exists('tinymce')) {
-    function tinymce($type = 'admin')
+    function tinymce($type = 'admin', $dir = '/admin_assets/js/tinymce')
     {
         if ($type == 'admin') {
     //        <script src="/admin_assets/tinymce/tinymce.min.js"></script>
             return '
                     
                     <script>
-                    tinyMCE.baseURL = "/admin_assets/js/tinymce";
+                    tinyMCE.baseURL = "'.$dir.'";
                     tinymce.init({
                         selector:\'textarea\',
                         plugins: [
@@ -285,7 +285,7 @@ if (!function_exists('tinymce')) {
             return '
                     
                     <script>
-                    tinyMCE.baseURL = "/admin_assets/js/tinymce";
+                    tinyMCE.baseURL = "'.$dir.'";
                     tinymce.init({
                         selector:\'textarea\',
                         plugins: [
