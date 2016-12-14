@@ -262,7 +262,7 @@ if (!function_exists('tinymce')) {
         if ($type == 'admin') {
     //        <script src="/admin_assets/tinymce/tinymce.min.js"></script>
             return '
-                    
+
                     <script>
                     tinyMCE.baseURL = "'.config('CvConfigs.cv_helpers.tinymce_admin_dir').'";
                     tinymce.init({
@@ -272,7 +272,7 @@ if (!function_exists('tinymce')) {
                             \'searchreplace visualblocks code fullscreen\',
                             \'insertdatetime media table contextmenu paste code jbimages\'
                         ],
-                        toolbar: \'insertfile undo redo | styleselect | bold italic | alignleft \' +
+                        toolbar: \'insertfile undo redo | fontsizeselect styleselect | bold italic | alignleft \' +
                         \'aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages\',
                         language: \'pt_BR\',
                         menubar: true,
@@ -283,7 +283,7 @@ if (!function_exists('tinymce')) {
         } else {
     //        <script src="/admin_assets/tinymce/tinymce.min.js"></script>
             return '
-                    
+
                     <script>
                     tinyMCE.baseURL = "'.config('CvConfigs.cv_helpers.tinymce_user_dir').'";
                     tinymce.init({
@@ -293,7 +293,7 @@ if (!function_exists('tinymce')) {
                             \'searchreplace visualblocks code fullscreen\',
                             \'insertdatetime media contextmenu paste\'
                         ],
-                        toolbar: "undo | bold italic | alignleft aligncenter alignjustify | " +
+                        toolbar: "undo | bold italic | fontsizeselect styleselect | alignleft aligncenter alignjustify | " +
                         "bullist numlist | link image",
                         language: \'pt_BR\',
                         menubar: false,
