@@ -51,9 +51,11 @@ if (!function_exists('getSize')) {
 if (!function_exists('getFoneLink')) {
     function getFoneLink($foneConfigKey)
     {
-        $fone = config('ProjectConfig.layout.' . $foneConfigKey);
+        $fone = config('ProjectConfig.layout.' . $foneConfigKey, null);
         if (is_null($fone)) {
-            throw new \Exception('Key não encontrada na nas configurações!');
+            $fone = $foneConfigKey;
+            $fone_link = str_replace(['(', ')', ' ', '-'], '', $fone);
+            return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
         }
         $fone_link = str_replace(['(', ')', ' ', '-'], '', $fone);
         return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
