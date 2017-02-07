@@ -1,6 +1,7 @@
 {
   "name": "cristianvuolo/helpers",
   "license": "",
+  "version": "0.0.1",
   "require": {
     "php": ">=5.5.9"
   },
