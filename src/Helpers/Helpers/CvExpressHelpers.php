@@ -11,14 +11,15 @@ if (!function_exists('getLayoutData')) {
 if (!function_exists('getStatus')) {
     function getStatus($n, $array)
     {
-        $array = config('ProjectConfig.status.' . $array);
+        $array = config('CvConfigs.cv_helpers.status.' . $array);
         if (!is_array($array)) {
             throw new \Exception('O array de status não encontrado no arquivo config/ProjectConfig.php');
         }
+
+        if($n == 'array') return $array;
+
         foreach ($array as $i => $s) {
-            if ($i == $n) {
-                return $s;
-            }
+            if ($i == $n) return $s;
         }
         return 'Indefinido';
     }
