@@ -7,19 +7,18 @@ if (!function_exists('getLayoutData')) {
 }
 
 
-
 if (!function_exists('getStatus')) {
-    function getStatus($n, $array)
+    function getStatus($statusNumber, $module)
     {
-        $array = config('CvConfigs.cv_helpers.status.' . $array);
-        if (!is_array($array)) {
+        $module = config('CvConfigs.cv_helpers.status.' . $module);
+        if (!is_array($module)) {
             throw new \Exception('O array de status não encontrado no arquivo config/ProjectConfig.php');
         }
 
-        if($n == 'array') return $array;
+        if($statusNumber == 'array') return $module;
 
-        foreach ($array as $i => $s) {
-            if ($i == $n) return $s;
+        foreach ($module as $i => $s) {
+            if ($i == $statusNumber) return $s;
         }
         return 'Indefinido';
     }
