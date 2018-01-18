@@ -23,12 +23,12 @@ if (!function_exists('getStatus')) {
             }
         }
         
-        if ($status == 'array') {
+        if ($statusNumber == 'array') {
             return $module;
         }
         
         foreach ($module as $i => $s) {
-            if ($i == $status) {
+            if ($i == $statusNumber) {
                 return $s;
             }
         }
