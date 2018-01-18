@@ -1,6 +1,6 @@
 {
   "name": "cristianvuolo/helpers",
-  "license": "",
+  "license": "MIT",
   "require": {
     "php": ">=5.5.9"
   },
