@@ -23,7 +23,7 @@ if (!function_exists('getStatus')) {
             }
         }
         
-        if ($statusNumber == 'array') {
+        if ($statusNumber === 'array') {
             return $module;
         }
         
