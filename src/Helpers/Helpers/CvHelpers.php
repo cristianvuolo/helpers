@@ -95,17 +95,10 @@ if (!function_exists('dataUser')) {
 
 
 if (!function_exists('moeda')) {
-    /**
-     * @param null $valor
-     * @param bool $onlyNumbers
-     * @return bool|int|mixed|null|string
-     */
     function moeda($valor = null, $onlyNumbers = false)
     {
 
-        if ($valor == null) {
-            return 'R$ 0,00';
-        }
+
         if (is_array($valor)) {
             $total = 0;
             foreach ($valor as $valor_array) {
@@ -113,13 +106,17 @@ if (!function_exists('moeda')) {
             }
             $valor = $total;
         }
-        // Pegando valor para retornar no spam com cor
-        setlocale(LC_MONETARY, 'pt_BR'); //'pt_BR.UTF-8
+
+        if ($valor == null) {
+            if($onlyNumbers) return null;
+            return 'R$ 0,00';
+        }
+
+        setlocale(LC_MONETARY, 'pt_BR');
 
         $valor = number_format($valor, 2, ',', '.');
         if ($onlyNumbers) return $valor;
-        $valor = 'R$ ' . $valor;
-        return $valor;
+        return 'R$ ' . $valor;
     }
 }
 
