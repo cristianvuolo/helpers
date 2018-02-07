@@ -73,3 +73,23 @@ if (!function_exists('getFoneLink')) {
         return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
     }
 }
+
+if (!function_exists('getConfig')) {
+    function getConfig($config, $value='value')
+    {
+        return \App\Models\Admin\Config::where('nome', $config)->first()->$value;
+    }
+}
+
+function redeS(array $redes, $template)
+{
+    $r = '';
+    foreach ($redes as $rede => $icon) {
+        $config = getConfig($rede);
+
+        if ($config) {
+            $r .= str_replace_array('?', [$config, $icon], $template);
+        }
+    }
+    return $r;
+}
