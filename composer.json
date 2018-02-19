@@ -1,6 +1,7 @@
 {
   "name": "cristianvuolo/helpers",
   "license": "MIT",
+  "description": "Addon Helpers",
   "require": {
     "php": ">=5.5.9"
   },
