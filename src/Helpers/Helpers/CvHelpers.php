@@ -58,6 +58,7 @@ if (!function_exists('setActive')) {
             if ($p1 == getUri($uriSegment)) {
                 return $class;
             }
+            return '';
         }
         if ($p1 == $uriSegment) {
             return $class;
