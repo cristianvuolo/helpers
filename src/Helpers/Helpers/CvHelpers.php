@@ -392,7 +392,7 @@ if (!function_exists('getMesNome')) {
 }
 
 if (!function_exists('shareBlock')) {
-    function shareBlock($scryptsOnly = false)
+    function shareBlock($scryptsOnly = false, $shareText = 'Gostou compartilhe:')
     {
         $scripts = '<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
             <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
@@ -414,7 +414,7 @@ if (!function_exists('shareBlock')) {
         }
 
         return '<div class="social pull-right" style="margin: 1.5em 0">
-        <h4>Gostou compartilhe:</h4>
+        <h4>'.$shareText.'</h4>
         <p>
         ' . $scripts . '
         </p>
