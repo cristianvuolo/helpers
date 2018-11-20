@@ -16,17 +16,17 @@ if (!function_exists('getStatus')) {
      */
     function getStatus($statusNumber, $module)
     {
-        if(!is_array($module)){
+        if (!is_array($module)) {
             $module = config('CvConfigs.cv_helpers.status.' . $module);
             if (!is_array($module)) {
                 throw new \Exception('O array de status não encontrado no arquivo CvConfigs/cv_helpers Modulo:' . $module);
             }
         }
-        
+
         if ($statusNumber === 'array') {
             return $module;
         }
-        
+
         foreach ($module as $i => $s) {
             if ($i == $statusNumber) {
                 return $s;
@@ -75,21 +75,24 @@ if (!function_exists('getFoneLink')) {
 }
 
 if (!function_exists('getConfig')) {
-    function getConfig($config, $value='value')
+    function getConfig($config, $value = 'value')
     {
         return \App\Models\Admin\Config::where('nome', $config)->first()->$value;
     }
 }
 
-function redeS(array $redes, $template)
-{
-    $r = '';
-    foreach ($redes as $rede => $icon) {
-        $config = getConfig($rede);
 
-        if ($config) {
-            $r .= str_replace_array('?', [$config, $icon], $template);
+if (!function_exists('redeS')) {
+    function redeS(array $redes, $template)
+    {
+        $r = '';
+        foreach ($redes as $rede => $icon) {
+            $config = getConfig($rede);
+
+            if ($config) {
+                $r .= str_replace_array('?', [$config, $icon], $template);
+            }
         }
+        return $r;
     }
-    return $r;
 }
