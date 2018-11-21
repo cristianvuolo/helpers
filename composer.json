@@ -12,5 +12,12 @@
     "psr-4": {
       "CristianVuolo\\Helpers\\": "src/Helpers/"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "CristianVuolo\\Helpers\\Providers\\HelpersServiceProvider"
+      ]
+    }
   }
 }

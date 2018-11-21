@@ -5,9 +5,8 @@ function admin()
     if (!session('adminSession.logado', false)) {
         throw new App\Exceptions\UserException('Você precisa estar logado para acessar essa página');
     }
-
     $admin = \App\Models\Admin\Admin::findOrFail(session('adminSession.id'));
-    if (count($admin) === 1) {
+    if ($admin) {
         return $admin;
     }
     throw new App\Exceptions\UserException('Houve um erro ao encontrar o usuário');
