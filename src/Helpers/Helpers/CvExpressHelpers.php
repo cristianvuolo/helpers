@@ -67,7 +67,10 @@ if (!function_exists('getFoneLink')) {
         if (is_null($fone)) {
             $fone = $foneConfigKey;
             $fone_link = str_replace(['(', ')', ' ', '-'], '', $fone);
-            return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
+            if (is_numeric($fone_link)) {
+                return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
+            }
+            return;
         }
         $fone_link = str_replace(['(', ')', ' ', '-'], '', $fone);
         return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
