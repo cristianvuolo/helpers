@@ -66,14 +66,25 @@ if (!function_exists('getFoneLink')) {
         $fone = config('ProjectConfig.layout.' . $foneConfigKey, null);
         if (is_null($fone)) {
             $fone = $foneConfigKey;
-            $fone_link = str_replace(['(', ')', ' ', '-'], '', $fone);
-            if (is_numeric($fone_link)) {
-                return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
-            }
-            return;
         }
-        $fone_link = str_replace(['(', ')', ' ', '-'], '', $fone);
-        return "<a href='phone:+55{$fone_link}'>{$fone}</a>";
+        $phone_number_cleaned = getFoneNumbers($foneConfigKey);
+
+        if (is_numeric($phone_number_cleaned)) {
+            return "<a href='phone:+55{$phone_number_cleaned}'>{$fone}</a>";
+        }
+        return;
+    }
+}
+
+if (!function_exists('getFoneNumbers')) {
+    function getFoneNumbers($foneConfigKey) {
+        $fone = config('ProjectConfig.layout.' . $foneConfigKey, null);
+
+        if (is_null($fone)) {
+            $fone = $foneConfigKey;
+        }
+
+        return str_replace(['(', ')', ' ', '-'], '', $fone);
     }
 }
 
