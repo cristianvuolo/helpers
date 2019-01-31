@@ -89,9 +89,13 @@ if (!function_exists('getFoneNumbers')) {
 }
 
 if (!function_exists('getConfig')) {
-    function getConfig($config, $value = 'value')
+    function getConfig($config_name, $default=null)
     {
-        return \App\Models\Admin\Config::where('nome', $config)->first()->$value;
+        $config = \App\Models\Admin\Config::where('nome', $config_name)->first();
+        if($config)
+            return $config->value;
+
+        return $default;
     }
 }
 
